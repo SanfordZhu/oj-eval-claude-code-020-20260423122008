@@ -1,0 +1,8 @@
+CMakeFiles/
+CMakeCache.txt
+test
+debug
+test_phase5
+test_free_count
+debug_test
+*.o

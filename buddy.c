@@ -61,7 +61,7 @@ static int get_buddy(int page_idx, int rank) {
 }
 
 int init_page(void *p, int pgcount) {
-    if (!p || pgcount <= 0) {
+    if (!p || pgcount <= 0 || pgcount > (1 << (MAX_RANK - 1))) {
         return -EINVAL;
     }
 
@@ -228,7 +228,7 @@ int query_ranks(void *p) {
     }
 
     int page_idx = offset / PAGE_SIZE;
-    if (page_idx >= total_pages) {
+    if (page_idx < 0 || page_idx >= total_pages) {
         return -EINVAL;
     }
 
